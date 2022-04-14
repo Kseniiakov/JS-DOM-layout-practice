@@ -1,8 +1,17 @@
 "use strict";
-function createRedButton(parentTag) {
+function createRedButton(parentTag, text, link) {
     const redBtn = document.createElement('a');
-    redBtn.href = '#';
+    redBtn.href = link;
     redBtn.classList.add('red-btn');
-    redBtn.textContent = 'Заказать звонок';
+    redBtn.textContent = text;
+
+    redBtn.addEventListener('mouseenter', () => {
+        redBtn.classList.add('red-btn-active');
+    });
+
+    redBtn.addEventListener('mouseleave', () => {
+        redBtn.classList.toggle('red-btn-active');
+    });
+    
     parentTag.append(redBtn);
 }
