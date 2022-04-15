@@ -39,13 +39,15 @@ function createHeader() {
     menuContain.classList.add('menu-container');
     header.append(menuContain);
 
-    iconTextDiv(menuContain, icon1, 'Войти', 'elem1');
+    const menuElem1 = iconTextDiv(icon1, 'Войти', 'menu-elem-container', 'elem1');
 
-    const menuElem2 = iconTextDiv(menuContain, icon2, 'Избранное', 'elem2');
+    const menuElem2 = iconTextDiv(icon2, 'Избранное', 'menu-elem-container', 'elem2');
 
-    menuElem2.firstElementChild.insertAdjacentHTML('beforeend', '<div id="count"> </div>');
+    menuElem2.firstElementChild.insertAdjacentHTML('beforeend', '<div id="count">2</div>');
 
-    iconTextDiv(menuContain, icon3, 'Корзина', 'elem3');
+    const menuElem3 = iconTextDiv(icon3, 'Корзина', 'menu-elem-container', 'elem3');
+
+    menuContain.append(menuElem1, menuElem2, menuElem3);
     
     return header;
 }
