@@ -1,17 +1,17 @@
 "use strict";
-function createRedButton(parentTag, text, link) {
+function createButton(text, link, className, classNameActive) {
     const redBtn = document.createElement('a');
     redBtn.href = link;
-    redBtn.classList.add('red-btn');
+    redBtn.classList.add(className);
     redBtn.textContent = text;
 
     redBtn.addEventListener('mouseenter', () => {
-        redBtn.classList.add('red-btn-active');
+        redBtn.classList.add(classNameActive);
     });
 
     redBtn.addEventListener('mouseleave', () => {
-        redBtn.classList.toggle('red-btn-active');
+        redBtn.classList.remove(classNameActive);
     });
     
-    parentTag.append(redBtn);
-}
+    return redBtn;
+};

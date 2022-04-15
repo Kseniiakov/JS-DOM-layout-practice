@@ -1,11 +1,17 @@
 "use strict";
-function createHeader(myHeader) {
+function createHeader() {
+    const header = document.createElement('header');
+    header.id = 'primary-header';
+
+    const linkLogo = document.createElement('a');
+    linkLogo.href = '#';
     const imgLogo = document.createElement('img');
     imgLogo.src = './imgs/logo.svg';
     imgLogo.alt = 'logo';
-    myHeader.append(imgLogo);
+    linkLogo.append(imgLogo);
+    header.append(linkLogo);
 
-    createSearch(myHeader);
+    createSearch(header);
 
     const callContain = document.createElement('div');
     callContain.classList.add('call-container');
@@ -18,9 +24,10 @@ function createHeader(myHeader) {
 
     callContain.append(divPhone);
 
-    createRedButton(callContain, 'Заказать звонок', '#');
+    const myRedBtn = createButton('Заказать звонок', '#', 'red-btn', 'red-btn-active');
+    callContain.append(myRedBtn);
 
-    myHeader.append(callContain);
+    header.append(callContain);
 
     const icon1 = '<svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.1238 19H0.863994C0.635375 19 0.416074 18.9096 0.254131 18.7487C0.0921879 18.5877 0.000804998 18.3693 0 18.1413L0 15.0222C0 13.2518 0.705144 11.5539 1.96031 10.3021C3.21547 9.05026 4.91784 8.34698 6.69291 8.34698H10.3071C12.0822 8.34698 13.7845 9.05026 15.0397 10.3021C16.2949 11.5539 17 13.2518 17 15.0222V18.1413C16.9996 18.2552 16.9766 18.368 16.9322 18.473C16.8879 18.578 16.8231 18.6731 16.7416 18.753C16.6601 18.8328 16.5635 18.8958 16.4575 18.9382C16.3515 18.9806 16.2381 19.0016 16.1238 19ZM1.72799 17.2948H15.272V15.0222C15.2712 13.7088 14.748 12.4495 13.8171 11.5206C12.8863 10.5916 11.6239 10.069 10.3071 10.0674H6.69291C5.3761 10.069 4.11373 10.5916 3.18289 11.5206C2.25204 12.4495 1.72879 13.7088 1.72799 15.0222V17.2948Z" fill="#1D1818"/><path d="M8.54675 9.679C7.58211 9.68199 6.63832 9.39904 5.8352 8.86608C5.03209 8.33312 4.40586 7.57418 4.03602 6.6856C3.66618 5.79702 3.5694 4.81887 3.75797 3.87534C3.94655 2.9318 4.41197 2.06542 5.09515 1.38619C5.77833 0.706949 6.64847 0.245484 7.5951 0.0603732C8.54173 -0.124738 9.52216 -0.0251475 10.4119 0.346502C11.3017 0.718152 12.0607 1.3451 12.5926 2.14776C13.1244 2.95042 13.4051 3.89259 13.3991 4.85467C13.3911 6.13432 12.8768 7.35906 11.9681 8.26251C11.0594 9.16596 9.82983 9.67503 8.54675 9.679ZM8.54675 1.7234C7.92873 1.7234 7.32456 1.90603 6.81053 2.24823C6.29649 2.59044 5.89564 3.07686 5.65858 3.6461C5.42152 4.21534 5.35888 4.84187 5.47857 5.44659C5.59826 6.05131 5.89491 6.6071 6.33107 7.0438C6.76723 7.4805 7.32335 7.77852 7.9292 7.90024C8.53506 8.02196 9.16349 7.96192 9.73516 7.7277C10.3068 7.49348 10.7961 7.09558 11.1412 6.58424C11.4863 6.0729 11.6718 5.47105 11.6742 4.85467C11.6754 4.44415 11.5954 4.03742 11.4388 3.65777C11.2822 3.27812 11.0521 2.93299 10.7616 2.64215C10.4711 2.3513 10.126 2.12045 9.74591 1.9628C9.36586 1.80515 8.95837 1.72379 8.54675 1.7234Z" fill="#1D1818"/></svg>';
 
@@ -30,7 +37,7 @@ function createHeader(myHeader) {
 
     const menuContain = document.createElement('div');
     menuContain.classList.add('menu-container');
-    myHeader.append(menuContain);
+    header.append(menuContain);
 
     iconTextDiv(menuContain, icon1, 'Войти', 'elem1');
 
@@ -39,4 +46,6 @@ function createHeader(myHeader) {
     menuElem2.firstElementChild.insertAdjacentHTML('beforeend', '<div id="count"> </div>');
 
     iconTextDiv(menuContain, icon3, 'Корзина', 'elem3');
+    
+    return header;
 }
