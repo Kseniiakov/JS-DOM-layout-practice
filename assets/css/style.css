@@ -146,3 +146,31 @@ body, .search-form input::placeholder {
 
   margin-left: 14px;
 }
+
+/* cards */
+
+.btn-container {
+  display: flex;
+}
+
+.card-btn {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  padding: 14px 70px;
+
+  border: 1px solid #384685;
+  box-sizing: border-box;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.card-btn-active {
+  background: #384685;
+  color: #FFFFFF;
+}
+.icon-like-container svg {
+  cursor: pointer;
+}

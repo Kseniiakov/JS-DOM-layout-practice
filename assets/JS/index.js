@@ -1,11 +1,8 @@
 "use strict";
-function createSite() {
+function createSite(main) {
     const body = document.querySelector('body');
 
     const myHeader = createHeader();
 
-    const main = document.createElement('main');
     body.append(myHeader, main);
 }
-
-createSite();
