@@ -1,12 +1,14 @@
 "use strict";
-function createMain(card) {
+function createMain(...card) {
     const main = document.createElement('main');
+
+    const h2 = document.createElement('h2');
+    h2.textContent = 'ПОПУЛЯРНЫЕ ТОВАРЫ';
+
     const popularProducts = document.createElement('section');
     popularProducts.id = 'popular-products';
     main.append(popularProducts);
-    popularProducts.append(card);
-    // for(let i = 0; i < 4; i++) {
-        
-    // }
+    popularProducts.append(h2, ...card);
+
     createSite(main);
-}
+};
