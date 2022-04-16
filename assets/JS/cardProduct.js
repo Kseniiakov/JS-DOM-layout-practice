@@ -13,8 +13,10 @@ async function createCard() {
             const discountSvg = '<svg width="63" height="30" viewBox="0 0 63 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M60.313 1.91569C59.0393 0.777219 57.3456 0.149655 55.5444 0.149366L15.2846 0.147555C13.3357 0.148042 11.4816 0.899575 10.2033 2.21191L1.76826 10.8567C-0.449645 13.1214 -0.449884 16.5368 1.76722 18.8006L10.2025 27.447C11.4816 28.7593 13.3343 29.512 15.2841 29.5124L55.5431 29.5135C57.1584 29.513 58.6426 29.003 59.8059 28.1526C61.3202 27.0457 62.289 25.362 62.2893 23.4806L62.2907 6.18151C62.2899 4.57045 61.5886 3.05545 60.313 1.91569ZM12.568 11.425L12.5841 11.4176L12.5895 11.4344L12.568 11.425ZM6.55521 15.4021C6.53577 15.3465 6.52773 15.2891 6.53043 15.23C6.53724 15.2877 6.54551 15.3452 6.55521 15.4021ZM13.1071 14.8303C13.1077 16.0029 12.0425 16.9578 10.7313 16.9572C9.42142 16.9572 8.35547 16.0031 8.35541 14.8305C8.35507 14.2624 8.60218 13.7285 9.05164 13.3265C9.11017 13.275 9.16999 13.2261 9.23192 13.1809C9.6548 12.8717 10.1782 12.7042 10.7317 12.7042C12.0419 12.7045 13.1076 13.6583 13.107 14.8303L13.1071 14.8303Z" fill="#E13B3F"/></svg>';
             
             const sale = product.sale;
-            const label = createLabel(discountSvg, sale);
 
+            const bestSellers = product.isBestseller;
+            
+            const label = createLabel(discountSvg, sale, bestSellers);
             cardContainer.append(label);
 
             const cardImage = document.createElement('img');
@@ -44,18 +46,33 @@ async function createCard() {
             const iconLikeContain = document.createElement('div');
             iconLikeContain.classList.add('icon-like-container');
             iconLikeContain.innerHTML = iconLike;
-            iconLikeContain.lastChild.classList.add('svg-hidden');
-
+            iconLikeContain.lastChild.classList.add('hidden');
             cardBtn.insertAdjacentElement('afterend', iconLikeContain);
-            btnContainer.append(cardBtn, iconLikeContain);
+
+            const popup = document.createElement('div');
+            popup.classList.add('hidden');
+            popup.textContent = 'Добавить в избранное';
+
+            btnContainer.append(cardBtn, iconLikeContain, popup);
+
+            // hover like icon
     
             iconLikeContain.addEventListener('mouseenter', (event) => {
-                event.target.firstChild.classList.add('svg-hidden');
-                event.target.lastChild.classList.add('svg-display');
+                console.log(event.target.nextElementSibling);
+                event.target.firstChild.classList.add('hidden');
+                event.target.lastChild.classList.add('display');
+                event.target.nextElementSibling.classList.add('icon-like-popup');
             });
             iconLikeContain.addEventListener('mouseleave', (event) => {
-                event.target.firstChild.classList.remove('svg-hidden');
-                event.target.lastChild.classList.remove('svg-display');
+                event.target.firstChild.classList.remove('hidden');
+                event.target.lastChild.classList.remove('display');
+                event.target.nextElementSibling.classList.remove('icon-like-popup');
+            });
+
+            // hover card
+
+            cardContainer.addEventListener('mouseenter', (event) => {
+
             });
     
             cardContainer.append(cardImage, cardHeader, price, btnContainer);

@@ -194,6 +194,8 @@ h2 {
 }
 
 .label-container {
+  display: flex;
+
   position: absolute;
   top: 22px;
   left: 22px;
@@ -209,6 +211,24 @@ h2 {
   position: absolute;
   top: 4px;
   left: 19px;
+}
+
+.best-seller {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 14px;
+  line-height: 18px;
+
+  color: #FFFFFF;
+
+  background: #0E9F2E;
+  border-radius: 5px;
+  width: 63px;
+  height: 30px;
+
+  margin-left: 11px;
 }
 
 .card-image {
@@ -276,6 +296,8 @@ h2 {
   align-items: center;
 
   margin-top: 17px;
+
+  position: relative;
 }
 
 .card-btn {
@@ -307,10 +329,36 @@ h2 {
   cursor: pointer;
 }
 
-.svg-hidden {
+.hidden {
   display: none;
 }
 
-.svg-display {
+.display {
   display: inline-block;
+}
+
+.icon-like-popup {
+  display:  flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-bottom: 19px;
+
+  width: 186px;
+  height: 70px;
+
+  background-image: url(/imgs/popup.png);
+  background-repeat: no-repeat;
+  background-position: center;
+
+  z-index: 10;
+
+  position: absolute;
+  top: -53px;
+  right: -125px;
+
+  font-size: 14px;
+  line-height: 18px;
+
+  color: #757575;
 }
