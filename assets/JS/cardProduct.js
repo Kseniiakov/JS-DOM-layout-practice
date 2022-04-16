@@ -71,11 +71,20 @@ async function createCard() {
 
             // hover card
 
-            cardContainer.addEventListener('mouseenter', (event) => {
+            const colorsArray = product.colors;
 
+            const colorsDiv = createColorsSection(colorsArray);
+            console.log(colorsDiv);
+
+            cardContainer.addEventListener('mouseenter', () => {
+                colorsDiv.classList.add('colors-wrapper');
+            });
+
+            cardContainer.addEventListener('mouseleave', () => {
+                colorsDiv.classList.remove('colors-wrapper');
             });
     
-            cardContainer.append(cardImage, cardHeader, price, btnContainer);
+            cardContainer.append(cardImage, cardHeader, colorsDiv, price, btnContainer);
             return cardContainer;
         });
 
