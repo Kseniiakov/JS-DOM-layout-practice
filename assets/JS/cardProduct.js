@@ -7,8 +7,12 @@ async function createCard() {
         const arrayProducts = data.data;
 
         const resultProducts = arrayProducts.map((product) => {
-            const cardContainer = document.createElement('article');
+            const cardArticle = document.createElement('article');
+            cardArticle.classList.add('card-article');
+
+            const cardContainer = document.createElement('div');
             cardContainer.classList.add('card-container');
+            cardArticle.append(cardContainer);
 
             const discountSvg = '<svg width="63" height="30" viewBox="0 0 63 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M60.313 1.91569C59.0393 0.777219 57.3456 0.149655 55.5444 0.149366L15.2846 0.147555C13.3357 0.148042 11.4816 0.899575 10.2033 2.21191L1.76826 10.8567C-0.449645 13.1214 -0.449884 16.5368 1.76722 18.8006L10.2025 27.447C11.4816 28.7593 13.3343 29.512 15.2841 29.5124L55.5431 29.5135C57.1584 29.513 58.6426 29.003 59.8059 28.1526C61.3202 27.0457 62.289 25.362 62.2893 23.4806L62.2907 6.18151C62.2899 4.57045 61.5886 3.05545 60.313 1.91569ZM12.568 11.425L12.5841 11.4176L12.5895 11.4344L12.568 11.425ZM6.55521 15.4021C6.53577 15.3465 6.52773 15.2891 6.53043 15.23C6.53724 15.2877 6.54551 15.3452 6.55521 15.4021ZM13.1071 14.8303C13.1077 16.0029 12.0425 16.9578 10.7313 16.9572C9.42142 16.9572 8.35547 16.0031 8.35541 14.8305C8.35507 14.2624 8.60218 13.7285 9.05164 13.3265C9.11017 13.275 9.16999 13.2261 9.23192 13.1809C9.6548 12.8717 10.1782 12.7042 10.7317 12.7042C12.0419 12.7045 13.1076 13.6583 13.107 14.8303L13.1071 14.8303Z" fill="#E13B3F"/></svg>';
             
@@ -58,7 +62,6 @@ async function createCard() {
             // hover like icon
     
             iconLikeContain.addEventListener('mouseenter', (event) => {
-                console.log(event.target.nextElementSibling);
                 event.target.firstChild.classList.add('hidden');
                 event.target.lastChild.classList.add('display');
                 event.target.nextElementSibling.classList.add('icon-like-popup');
@@ -72,20 +75,27 @@ async function createCard() {
             // hover card
 
             const colorsArray = product.colors;
-
             const colorsDiv = createColorsSection(colorsArray);
-            console.log(colorsDiv);
+
+            const dimensionsObj = product.dimensions;
+            const dimensions = createDimensions(dimensionsObj);
 
             cardContainer.addEventListener('mouseenter', () => {
                 colorsDiv.classList.add('colors-wrapper');
+                cardBtn.classList.add('card-hover-btn');
+                dimensions.classList.add('dimensions-wrapper');
+                cardContainer.classList.add('card-container-hover');
             });
 
             cardContainer.addEventListener('mouseleave', () => {
                 colorsDiv.classList.remove('colors-wrapper');
+                cardBtn.classList.remove('card-hover-btn');
+                dimensions.classList.remove('dimensions-wrapper');
+                cardContainer.classList.remove('card-container-hover');
             });
-    
-            cardContainer.append(cardImage, cardHeader, colorsDiv, price, btnContainer);
-            return cardContainer;
+
+            cardContainer.append(cardImage, cardHeader, colorsDiv, price, btnContainer, dimensions);
+            return cardArticle;
         });
 
         createMain(...resultProducts);
