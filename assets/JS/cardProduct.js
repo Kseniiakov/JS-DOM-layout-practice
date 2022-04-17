@@ -72,6 +72,9 @@ async function createCard() {
                 event.target.nextElementSibling.classList.remove('icon-like-popup');
             });
 
+            //click like icon
+            
+
             // hover card
 
             const colorsArray = product.colors;

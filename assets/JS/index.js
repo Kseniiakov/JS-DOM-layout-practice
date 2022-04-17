@@ -5,4 +5,6 @@ function createSite(main) {
     const myHeader = createHeader();
 
     body.append(myHeader, main);
+
+    likeCounter();
 }

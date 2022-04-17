@@ -43,7 +43,7 @@ function createHeader() {
 
     const menuElem2 = iconTextDiv(icon2, 'Избранное', 'menu-elem-container', 'elem2');
 
-    menuElem2.firstElementChild.insertAdjacentHTML('beforeend', '<div id="count">2</div>');
+    menuElem2.firstElementChild.insertAdjacentHTML('beforeend', '<div id="count"></div>');
 
     const menuElem3 = iconTextDiv(icon3, 'Корзина', 'menu-elem-container', 'elem3');
 

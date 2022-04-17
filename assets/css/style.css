@@ -338,11 +338,11 @@ h2 {
   cursor: pointer;
 }
 
-.hidden {
+.hidden, .hidden-click {
   display: none;
 }
 
-.display {
+.display, .display-click {
   display: inline-block;
 }
 
