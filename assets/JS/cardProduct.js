@@ -97,8 +97,7 @@ async function createCard() {
             cardContainer.append(cardImage, cardHeader, colorsDiv, price, btnContainer, dimensions);
             return cardArticle;
         });
-
-        createMain(...resultProducts);
+        createSectionPopularProducts(...resultProducts);
         
     } catch(e) {
         console.error(e);

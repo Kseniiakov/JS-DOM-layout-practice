@@ -1,7 +1,6 @@
 "use strict";
 function createHeader() {
     const header = document.createElement('header');
-    header.id = 'primary-header';
 
     const linkLogo = document.createElement('a');
     linkLogo.href = '#';
@@ -11,7 +10,8 @@ function createHeader() {
     linkLogo.append(imgLogo);
     header.append(linkLogo);
 
-    createSearch(header);
+    const mySearchForm = createSearch();
+    header.append(mySearchForm);
 
     const callContain = document.createElement('div');
     callContain.classList.add('call-container');
@@ -23,6 +23,16 @@ function createHeader() {
     divPhone.append(pPhone);
 
     callContain.append(divPhone);
+
+    callContain.addEventListener('mouseenter', (event) =>{
+        event.currentTarget.querySelector('svg').classList.add('phone-svg');
+        event.currentTarget.querySelector('p').classList.add('phone-elem-active');
+    });
+
+    callContain.addEventListener('mouseleave', (event) =>{
+        event.currentTarget.querySelector('svg').classList.remove('phone-svg');
+        event.currentTarget.querySelector('p').classList.remove('phone-elem-active');
+    });
 
     const myRedBtn = createButton('Заказать звонок', '#', 'red-btn', 'red-btn-active');
     callContain.append(myRedBtn);

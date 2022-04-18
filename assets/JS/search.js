@@ -1,6 +1,6 @@
 "use strict";
 
-function createSearch(parentTag) {
+function createSearch() {
     const searchForm = document.createElement('form');
     searchForm.classList.add('search-form');
     
@@ -17,5 +17,5 @@ function createSearch(parentTag) {
     searchBtn.append(searchIcon);
 
     searchForm.append(searchInput, searchBtn);
-    parentTag.append(searchForm);
+    return searchForm;
 }
